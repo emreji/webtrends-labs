@@ -25,21 +25,41 @@ var days;
     days[days["Friday"] = 5] = "Friday";
     days[days["Saturday"] = 6] = "Saturday";
 })(days || (days = {}));
-console.log(months);
+// console.log(months);
 //html elements
 var pTodayDate = document.getElementById("p--today-date");
 //Today's date
 var today = new Date();
 console.log(today);
 //today's month
-console.log(today.getMonth());
+// console.log(today.getMonth());
 var todayMonth = months[today.getMonth()];
 //day of week
-console.log(today.getDay());
+// console.log(today.getDay());
 var todayDay = days[today.getDay()];
 //day of month
-console.log(today.getDate());
+// console.log(today.getDate())
 //year
-console.log(today.getFullYear());
+// console.log(today.getFullYear());
 //display today's date to page
 pTodayDate.innerHTML = "Today is " + todayDay + ", " + todayMonth + " " + today.getDate() + ", " + today.getFullYear();
+//Part 2
+var birthdayButton = document.getElementById("button--birthday");
+var userBirtday;
+birthdayButton.onclick = function () {
+    //assign userBirthday value to input value
+    var dateInput = document.getElementById("input--date-picker");
+    userBirtday = dateInput.value;
+    var userBirthdayDate = new Date(userBirtday + " GMT-0400");
+    var birthdayMessage = document.getElementById("p--birthday-message");
+    birthdayMessage.innerHTML = constructDateString(userBirthdayDate);
+};
+function constructDateString(userDate) {
+    if (userDate.getMonth() === today.getMonth() && userDate.getDate() === today.getDate()) {
+        return "Happy Birthday";
+    }
+    else {
+        var currentYearBirthday = new Date(today.getFullYear() + "-" + userDate.getMonth() + "-" + userDate.getDate());
+        return "Your birthday is on " + days[currentYearBirthday.getDay()] + ", " + months[currentYearBirthday.getMonth()] + " " + currentYearBirthday.getDate() + ", " + currentYearBirthday.getFullYear();
+    }
+}
