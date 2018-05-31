@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+.nav > li {
+    font-size: 20px;
+    padding-right: 10px;
+    display: inline-grid;
+    list-style: none;
+}
+
+.nav > li:hover .nav-sub{
+    display: inline;
+}
+
+.nav > li a{ 
+    text-decoration: none;
+    color: black;
+}
+
+.nav-sub {
+    display: none;
+    padding: 0;
+}
+
+.nav-sub > li {
+    font-size: 15px;
+    list-style: none;
+}
+
+.nav-sub > li:hover .nav-sub3 {
+    display: inline-grid;
+}
+
+.nav-sub3 {
+    display: none;
+    /* display: inline-grid; */
+    padding: 0;
+}
+
+.nav-sub3 > li{
+    list-style: none;
+}
